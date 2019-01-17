@@ -1,0 +1,41 @@
+easy_admin:
+    site_name: '<em style="font-size: 80%;">The_Back_0n_Fire</em> 🔥'
+    list:
+      max_results: 20
+    entities:
+      #List the entity class name you want to manage
+      Product:
+        class: App\Entity\Product
+        form:
+          #Le titre sera en global. Il est présent dans edit et new
+          title: 'test du titre global'
+        new:
+            #Le titre présent dans 'new' écrase le titre global
+          title: 'Ajouter un produit'
+      Category:
+        class: App\Entity\Category
+      Utilisateur:
+        class: App\Entity\Utilisateur
+        form:
+          title: 'Ajouter un utilisateur'
+          fields:
+            - { type: 'group', label: 'User Details', icon: 'user', columns: 6 }
+            - name
+            - surname
+            - { type: 'group', label: 'Email information', icon: 'envelope', columns: 6 }
+            - email
+      User:
+        class: App\Entity\User
+      Property:
+        class: App\Entity\Property
+        help: 'Help test for my property'
+        list:
+          fields: ['id', 'title', 'surface', 'price', 'sold']
+          sort: ['id', 'ASC']
+      Option:
+        class: App\Entity\Option
+        list:
+          max_results: 10
+    design:
+      # the value of this option can be any valid CSS color
+      brand_color: 'rgb(255, 196, 0)'
