@@ -10,7 +10,7 @@ easy_admin:
           #Le titre sera en global. Il est présent dans edit et new
           title: 'test du titre global'
         new:
-            #Le titre présent dans 'new' écrase le titre global
+          #Le titre présent dans 'new' écrase le titre global
           title: 'Ajouter un produit'
       Category:
         class: App\Entity\Category
@@ -26,16 +26,23 @@ easy_admin:
             - email
       User:
         class: App\Entity\User
+        #Empêche la création, la modification et la supression d'un nouvel utilisateur
+        disabled_actions: ['new', 'edit', 'delete']
       Property:
         class: App\Entity\Property
         help: 'Help test for my property'
         list:
           fields: ['id', 'title', 'surface', 'price', 'sold']
           sort: ['id', 'ASC']
+          actions:
+            - { name: 'show', icon: 'eye', title: 'Show' }
+            - { name: 'delete', icon: 'trash', title: 'Delete' }
+            - { name: '-edit' }
       Option:
         class: App\Entity\Option
         list:
           max_results: 10
+          actions: ['show', '-edit']
     design:
       # the value of this option can be any valid CSS color
       brand_color: 'rgb(255, 196, 0)'
